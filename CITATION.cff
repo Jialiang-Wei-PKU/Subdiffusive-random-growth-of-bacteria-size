@@ -1,0 +1,21 @@
+cff-version: 1.2.0
+
+message: "If you use the theoretical models, mathematical analyses, or code, please cite this repository. The experimental claim of intrinsic subdiffusion is not established; see README."
+
+type: software
+
+title: "Subdiffusive Random Growth of Bacterial Size - Research Archive"
+
+authors:
+  - family-names: Wei
+    given-names: Jialiang
+  - family-names: Yan
+    given-names: Yichen
+  - family-names: Lin
+    given-names: Jie
+
+repository-code: "https://github.com/Jialiang-Wei-PKU/Subdiffusive-random-growth-of-bacterial-size"
+
+url: "https://github.com/Jialiang-Wei-PKU/Subdiffusive-random-growth-of-bacterial-size"
+
+version: 1.0.0
