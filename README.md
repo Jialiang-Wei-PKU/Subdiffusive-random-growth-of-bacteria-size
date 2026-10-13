@@ -1,45 +1,42 @@
-# Subdiffusive Random Growth of Bacteria
+# Subdiffusive Random Growth of Bacterial Size — Research Archive
 
-This repository archives the mathematical modeling, theoretical formulations, and numerical simulation scripts developed for investigating subdiffusive random growth behaviors in bacterial cell size.
+> **Important scientific note (October 2026).** This repository archives an unpublished manuscript and its supporting materials. Following peer review, we concluded that the experimental data presented in the manuscript do **not** establish intrinsic subdiffusive bacterial growth. Frame-to-frame errors in cell-size measurements can produce both an approximately lag-independent contribution to the variance of size increments and an anticorrelation between consecutive increments. We did not rule out this alternative explanation. Therefore, the reported experimental exponent near 0.25 and its proposed biological interpretation should **not** be regarded as established findings.
 
----
+## Why we are sharing this work
 
-## ⚠️ Project Status & Notice
+Although we are not pursuing further journal submission of this manuscript, we believe some of its theoretical and methodological components may be useful independently of the unresolved experimental interpretation. We are making the manuscript, supplementary material, and simulation/figure-generation code available for inspection, reproduction, and further research.
 
-**Notice on Experimental Findings:**  
-Preliminary experimental data that originally motivated this study were subsequently identified as potential **experimental noise/artifacts**. Consequently, further manuscript publication and experimental follow-ups have been discontinued.
+In particular, the archive contains:
 
-**Why this repository exists:**  
-Although the empirical phenomenon was not sustained, the theoretical framework—including non-equilibrium statistical mechanics models, stochastic simulation scripts, and analytical formulations—remains methodologically valid and mathematically self-consistent. This repository is made publicly available to:
-1. Provide a reference for the mathematical and simulation techniques developed during this project.
-2. Serve as a transparent record for peer researchers working on bacterial growth dynamics and anomalous diffusion models.
+- **A viscoelastic stochastic-growth model.** A collection of elements with heterogeneous relaxation times can transform microscopic white-noise forcing into temporally correlated macroscopic fluctuations. Under the model's stated assumptions, a power-law relaxation-time distribution leads to subdiffusive scaling with exponent $\alpha=3-2\beta$ for $1<\beta<3/2$ in the appropriate asymptotic regime. This is a theoretical mechanism, **not evidence** that it is the mechanism operating in the experimental system.
+- **Analyses of statistical biases in cell-growth measurements.** The manuscript and supplement study how conditioning growth-rate estimates on relative cell-cycle age, cell size, or elapsed time can produce apparent acceleration or deceleration, including first-passage and survival-selection effects.
+- **Numerical and plotting code.** Scripts accompanying the study are provided to help reproduce the model calculations and figures.
 
----
+## Interpretation and limitations
 
-## 📂 Repository Contents
+Let $x_{\mathrm{obs}}(t)=x_{\mathrm{true}}(t)+\varepsilon(t)$, where $\varepsilon(t)$ is frame-to-frame independent measurement error of variance $\sigma_\varepsilon^2$, also independent of the true process. Then, for nonzero time lag $\Delta t$,
 
-- `model/` — Mathematical derivations and analytical formulations.
-- `simulations/` — Numerical simulation scripts (MATLAB / Python) for stochastic growth processes.
-- `data/` — Minimal illustrative simulation results and analysis scripts.
+$$
+\operatorname{Var}[x_{\mathrm{obs}}(t+\Delta t)-x_{\mathrm{obs}}(t)]
+=\operatorname{Var}[x_{\mathrm{true}}(t+\Delta t)-x_{\mathrm{true}}(t)] + 2\sigma_\varepsilon^2.
+$$
 
----
+For consecutive non-overlapping single-frame increments, the measurement-error contribution to the covariance is $-\sigma_\varepsilon^2$. These effects can mimic key signatures originally interpreted as subdiffusion. The available analyses do not distinguish this artifact from genuine intrinsic subdiffusion convincingly enough to support the manuscript's central experimental claim.
 
-## ⚖️ Disclaimer
+The manuscript PDFs are retained as historical research documents and contain statements that **no longer reflect our current level of confidence** in the experimental interpretation. The theoretical derivations, model assumptions, and numerical implementations are presented for independent examination rather than as independently validated conclusions.
 
-This repository and its contents are provided **"AS IS"** under the [MIT License](LICENSE), without warranty of any kind, express or implied. The author makes no claims regarding the experimental reproducibility of the originally observed phenomenon. Users assume all responsibility for any application or adaptation of the provided models and code.
+## Repository contents
 
----
+- `manuscript.pdf` — original research manuscript (archived version).
+- `supplementary_material.pdf` — supporting calculations and figures.
+- `code/` — model simulation and figure-generation scripts.
 
-## 📖 Citation
+## Citation
 
-If you find the mathematical formulations, theoretical models, or simulation code useful in your own research, please cite this repository as follows:
+If you use the theoretical model, statistical-bias analysis, or code, please cite the **specific version or commit** of this repository, for example:
 
-```bibtex
-@misc{Wei2026Subdiffusive,
-  author       = {Wei, Jialiang},
-  title        = {Subdiffusive Random Growth of Bacteria: Mathematical Modeling and Simulation Framework},
-  year         = {2026},
-  publisher    = {GitHub},
-  journal      = {GitHub Repository},
-  howpublished = {\url{[https://github.com/Jialiang-Wei-PKU/Subdiffusive-random-growth-of-bacteria-size](https://github.com/Jialiang-Wei-PKU/Subdiffusive-random-growth-of-bacteria-size)}}
-}
+> Wei, J., Yan, Y., and Lin, J. (2026). *Subdiffusive Random Growth of Bacterial Size* [unpublished research manuscript and code archive]. GitHub, repository URL and version/commit.
+
+Such a citation acknowledges the archived theoretical or computational work; it should **not** be used as evidence that intrinsic subdiffusion in bacterial growth was experimentally demonstrated.
+
+Corrections, independent checks, and constructive discussion are welcome.
