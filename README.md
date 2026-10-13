@@ -1,42 +1,58 @@
 # Subdiffusive Random Growth of Bacterial Size — Research Archive
 
-> **Important scientific note (October 2026).** This repository archives an unpublished manuscript and its supporting materials. Following peer review, we concluded that the experimental data presented in the manuscript do **not** establish intrinsic subdiffusive bacterial growth. Frame-to-frame errors in cell-size measurements can produce both an approximately lag-independent contribution to the variance of size increments and an anticorrelation between consecutive increments. We did not rule out this alternative explanation. Therefore, the reported experimental exponent near 0.25 and its proposed biological interpretation should **not** be regarded as established findings.
+> **Important scientific note (October 2026).** A previous version of this study is publicly available on [bioRxiv](https://doi.org/10.64898/2026.03.19.712816). This GitHub repository contains a **more recent manuscript version**, supplementary materials, and simulation/figure-generation code. **Neither version establishes that intrinsic bacterial growth is subdiffusive.** Following peer review, we recognized that frame-to-frame cell-size measurement errors offer an alternative explanation for key experimental observations, and this possibility has not been adequately ruled out. In particular, the reported experimental exponent near 0.25 and the attribution of that exponent to cell-wall viscoelasticity should **not** be treated as established experimental conclusions.
 
-## Why we are sharing this work
+## Background and purpose
 
-Although we are not pursuing further journal submission of this manuscript, we believe some of its theoretical and methodological components may be useful independently of the unresolved experimental interpretation. We are making the manuscript, supplementary material, and simulation/figure-generation code available for inspection, reproduction, and further research.
+The earlier preprint, [*Subdiffusive random growth of bacteria*](https://doi.org/10.64898/2026.03.19.712816) (Wei, Yan, and Lin, bioRxiv, 2026), provides a public record of this project. The manuscript archived here, titled *Subdiffusive random growth of bacterial size*, reflects later revisions and may differ from the bioRxiv version. The papers are shared for transparency and historical context; we are not currently pursuing further journal submission.
 
-In particular, the archive contains:
+We are releasing these materials because parts of the theoretical and computational work may be useful independently of the unresolved experimental interpretation:
 
-- **A viscoelastic stochastic-growth model.** A collection of elements with heterogeneous relaxation times can transform microscopic white-noise forcing into temporally correlated macroscopic fluctuations. Under the model's stated assumptions, a power-law relaxation-time distribution leads to subdiffusive scaling with exponent $\alpha=3-2\beta$ for $1<\beta<3/2$ in the appropriate asymptotic regime. This is a theoretical mechanism, **not evidence** that it is the mechanism operating in the experimental system.
-- **Analyses of statistical biases in cell-growth measurements.** The manuscript and supplement study how conditioning growth-rate estimates on relative cell-cycle age, cell size, or elapsed time can produce apparent acceleration or deceleration, including first-passage and survival-selection effects.
-- **Numerical and plotting code.** Scripts accompanying the study are provided to help reproduce the model calculations and figures.
+- **Viscoelastic stochastic-growth model.** A collection of Voigt elements with broadly distributed relaxation times provides a mechanism by which microscopic white-noise forcing can lead to temporally correlated, subdiffusive macroscopic fluctuations. Under the stated model assumptions and in the appropriate asymptotic regime, the predicted scaling exponent is $\alpha=3-2\beta$ for $1<\beta<3/2$.
+- **Statistical-bias analysis.** Analytical arguments and simulations explore apparent acceleration or deceleration in estimated cell growth rates when observations are conditioned on relative cell-cycle age, size, or elapsed time, including first-passage and survival-selection effects.
+- **Code and figure-generation materials.** Scripts are organized in the repository for inspection and reuse, subject to the repository license and any third-party data restrictions. Data-dependent figures may require access to the unpublished experimental measurements.
 
-## Interpretation and limitations
+These theoretical results describe the specified models; they are **not experimental validation** of intrinsic subdiffusion in bacteria.
 
-Let $x_{\mathrm{obs}}(t)=x_{\mathrm{true}}(t)+\varepsilon(t)$, where $\varepsilon(t)$ is frame-to-frame independent measurement error of variance $\sigma_\varepsilon^2$, also independent of the true process. Then, for nonzero time lag $\Delta t$,
+## Experimental data provenance
+
+The experimental cell-growth trajectories analyzed in this project come from **unpublished single-cell data associated with** the following published study:
+
+> Taheri-Araghi, S., Bradde, S., Sauls, J. T., Hill, N. S., Levin, P. A., Paulsson, J., Vergassola, M., and Jun, S. (2015). *Cell-Size Control and Homeostasis in Bacteria*. **Current Biology, 25**, 385–391. https://doi.org/10.1016/j.cub.2014.12.009
+
+The source study is published, but **the specific raw experimental dataset used for our analysis was not publicly released as part of that publication**. These are data originating from the earlier study, not experiments newly conducted for this project. This archive contains analyses of those measurements alongside theoretical and computational work. Availability of analysis or plotting code should **not** be taken to imply that the underlying unpublished data are openly available or licensed for redistribution. Reproducing data-dependent figures may require separate authorized access to the original measurements.
+
+## Why the experimental interpretation is unresolved
+
+Let the measured logarithmic cell volume be $x_{\mathrm{obs}}(t)=x_{\mathrm{true}}(t)+\varepsilon(t)$. If the frame-to-frame measurement errors $\varepsilon(t)$ are independent, with variance $\sigma_\varepsilon^2$, and independent of the true growth process, then for a nonzero time lag $\Delta t$:
 
 $$
-\operatorname{Var}[x_{\mathrm{obs}}(t+\Delta t)-x_{\mathrm{obs}}(t)]
-=\operatorname{Var}[x_{\mathrm{true}}(t+\Delta t)-x_{\mathrm{true}}(t)] + 2\sigma_\varepsilon^2.
+\mathrm{Var}[x_{\mathrm{obs}}(t+\Delta t)-x_{\mathrm{obs}}(t)]
+=\mathrm{Var}[x_{\mathrm{true}}(t+\Delta t)-x_{\mathrm{true}}(t)]
++2\sigma_\varepsilon^2.
 $$
 
-For consecutive non-overlapping single-frame increments, the measurement-error contribution to the covariance is $-\sigma_\varepsilon^2$. These effects can mimic key signatures originally interpreted as subdiffusion. The available analyses do not distinguish this artifact from genuine intrinsic subdiffusion convincingly enough to support the manuscript's central experimental claim.
+The error also contributes $-\sigma_\varepsilon^2$ to the covariance of consecutive, non-overlapping single-frame growth increments. Thus, ordinary accumulating growth fluctuations combined with nonaccumulating measurement noise may generate both an apparently low scaling exponent over a short time window and a strong negative one-frame-lag correlation. Our analysis did not distinguish this alternative convincingly from intrinsic subdiffusion.
 
-The manuscript PDFs are retained as historical research documents and contain statements that **no longer reflect our current level of confidence** in the experimental interpretation. The theoretical derivations, model assumptions, and numerical implementations are presented for independent examination rather than as independently validated conclusions.
+**Please read the manuscript and figures in light of this limitation.** Some experimental claims in the archived PDFs no longer reflect our current confidence. The mathematical derivations and simulations are offered for independent checking, not with a guarantee that every claim or implementation is correct.
 
-## Repository contents
+## Repository structure
 
-- `manuscript.pdf` — original research manuscript (archived version).
-- `supplementary_material.pdf` — supporting calculations and figures.
-- `code/` — model simulation and figure-generation scripts.
+| Path                      | Contents                                                     |
+| ------------------------- | ------------------------------------------------------------ |
+| `main/`                   | Main-manuscript materials, including the later version       |
+| `SM/`                     | Supplemental-material files                                  |
+| `fig1/`, `fig2/`, `fig3/` | Materials associated with the three main figures; some analyses depend on unpublished experimental data |
+| `figS/`                   | Supplemental-figure materials                                |
+| `LICENSE`                 | Repository license                                           |
 
 ## Citation
 
-If you use the theoretical model, statistical-bias analysis, or code, please cite the **specific version or commit** of this repository, for example:
+For the underlying experimental study, please cite Taheri-Araghi et al. (2015), as specified above. For this project's publicly posted preprint, please cite:
 
-> Wei, J., Yan, Y., and Lin, J. (2026). *Subdiffusive Random Growth of Bacterial Size* [unpublished research manuscript and code archive]. GitHub, repository URL and version/commit.
+> Wei, J., Yan, Y., and Lin, J. (2026). *Subdiffusive random growth of bacteria*. **bioRxiv**. https://doi.org/10.64898/2026.03.19.712816
 
-Such a citation acknowledges the archived theoretical or computational work; it should **not** be used as evidence that intrinsic subdiffusion in bacterial growth was experimentally demonstrated.
+If you use a derivation, model implementation, or figure-generation script from the **later GitHub version**, please also reference this repository with a specific commit hash or release tag so the version used is identifiable. Please do not cite either version as established experimental evidence of intrinsic subdiffusive bacterial growth.
 
-Corrections, independent checks, and constructive discussion are welcome.
+Comments, corrections, and independent verification are welcome.
+
