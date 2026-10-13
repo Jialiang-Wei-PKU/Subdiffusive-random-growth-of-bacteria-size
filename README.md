@@ -47,8 +47,7 @@ The error also contributes $-\sigma_\varepsilon^2$ to the covariance of consecut
 | `LICENSE`                 | Repository license                                           |
 
 ## Reproducibility
-
-The repository contains simulation and figure-generation code organized into `fig1/`, `fig2/`, `fig3/`, and `figS/`.
+The simulation and figure-generation scripts are written primarily in MATLAB (.m files). MATLAB is required to run these scripts. The repository contains simulation and figure-generation code organized into `fig1/`, `fig2/`, `fig3/`, and `figS/`.
 
 The theoretical models and numerical simulations can be studied independently of the experimental data. However, some figure-generation scripts depend on unpublished experimental measurements associated with Taheri-Araghi et al. (2015), which are **not included in this repository**. Therefore, not all experimental figures can be reproduced using the publicly available files alone.
 
