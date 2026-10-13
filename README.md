@@ -48,11 +48,11 @@ The error also contributes $-\sigma_\varepsilon^2$ to the covariance of consecut
 
 ## Citation
 
-For the underlying experimental study, please cite Taheri-Araghi et al. (2015), as specified above. For this project's publicly posted preprint, please cite:
+If you find the theoretical model, mathematical derivations, statistical-bias analyses, or simulation code useful, please cite this GitHub repository, preferably using a specific release or commit.
 
-> Wei, J., Yan, Y., and Lin, J. (2026). *Subdiffusive random growth of bacteria*. **bioRxiv**. https://doi.org/10.64898/2026.03.19.712816
+The earlier version of this manuscript is available on bioRxiv ([DOI: 10.64898/2026.03.19.712816](https://doi.org/10.64898/2026.03.19.712816)) as a historical record. However, its central experimental claim of intrinsic subdiffusive bacterial growth is not sufficiently supported, as the observed signatures may be explained by measurement noise.
 
-If you use a derivation, model implementation, or figure-generation script from the **later GitHub version**, please also reference this repository with a specific commit hash or release tag so the version used is identifiable. Please do not cite either version as established experimental evidence of intrinsic subdiffusive bacterial growth.
+We therefore recommend citing this repository for its theoretical and methodological contributions rather than citing the bioRxiv preprint as evidence for experimental subdiffusion.
 
 Comments, corrections, and independent verification are welcome.
 
